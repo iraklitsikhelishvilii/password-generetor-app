@@ -42,10 +42,10 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
   },
   Hover: false,
   HandleEnter: () => {
-    set((state) => ({ Hover: true }));
+    set(() => ({ Hover: true }));
   },
   HandleLeave: () => {
-    set((state) => ({ Hover: false }));
+    set(() => ({ Hover: false }));
   },
   TooWeakColor: "",
   TooWeakColorBorder: "#E6E5EA",
@@ -57,13 +57,7 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
   StrongColorBorder: "#E6E5EA",
   strengthWord: "",
   ChangeColors: () => {
-    const {
-      UpperCaseLetters,
-      LowerCaseLetters,
-      Numbers,
-      Symbols,
-      strengthWord,
-    } = get();
+    const { UpperCaseLetters, LowerCaseLetters, Numbers, Symbols } = get();
     if (UpperCaseLetters && LowerCaseLetters && Numbers && Symbols) {
       set({
         TooWeakColor: "#A4FFAF",

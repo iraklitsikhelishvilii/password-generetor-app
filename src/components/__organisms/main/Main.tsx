@@ -2,26 +2,25 @@
 import Image from "next/image";
 import copy_img from "../../../images/fa-regular_copy.svg";
 import { useMainStates } from "@/store";
-
 import Features_div from "@/components/__molecules/features_div/Features_div";
 import Strength_div from "@/components/__molecules/strength_div/Strength_div";
 import { useState } from "react";
 import Button from "@/components/__atoms/button/Button";
 
 function Main() {
-  let Hover = useMainStates((state) => state.Hover);
-  let HandleEnter = useMainStates((state) => state.HandleEnter);
-  let HandleLeave = useMainStates((state) => state.HandleLeave);
+  const Hover = useMainStates((state) => state.Hover);
+  const HandleEnter = useMainStates((state) => state.HandleEnter);
+  const HandleLeave = useMainStates((state) => state.HandleLeave);
   const [Value, setValue] = useState(12);
   const [Password, setPassword] = useState("PTx1f5DaFX");
   const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(Number(e.target.value));
   };
 
-  let UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
-  let LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
-  let Numbers = useMainStates((state) => state.Numbers);
-  let Symbols = useMainStates((state) => state.Symbols);
+  const UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
+  const LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
+  const Numbers = useMainStates((state) => state.Numbers);
+  const Symbols = useMainStates((state) => state.Symbols);
   function Getpassword(
     length: number,
     UpperCaseLetters: boolean,

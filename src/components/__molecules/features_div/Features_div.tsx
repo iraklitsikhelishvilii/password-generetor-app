@@ -5,19 +5,21 @@ import check_img from "../../../images/Group 10.svg";
 import { useMainStates } from "@/store";
 
 function Features_div() {
-  let UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
-  let setUpperCaseletters = useMainStates((state) => state.setUpperCaseletters);
+  const UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
+  const setUpperCaseletters = useMainStates(
+    (state) => state.setUpperCaseletters
+  );
 
-  let LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
-  let LowerCaseLettersClick = useMainStates(
+  const LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
+  const LowerCaseLettersClick = useMainStates(
     (state) => state.LowerCaseLettersClick
   );
 
-  let Numbers = useMainStates((state) => state.Numbers);
-  let NumberClick = useMainStates((state) => state.NumberClick);
+  const Numbers = useMainStates((state) => state.Numbers);
+  const NumberClick = useMainStates((state) => state.NumberClick);
 
-  let Symbols = useMainStates((state) => state.Symbols);
-  let SymbolsClick = useMainStates((state) => state.SymbolsClick);
+  const Symbols = useMainStates((state) => state.Symbols);
+  const SymbolsClick = useMainStates((state) => state.SymbolsClick);
 
   return (
     <div className=" flex flex-col gap-[20px] mt-[32px]">

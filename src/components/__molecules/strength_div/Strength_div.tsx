@@ -2,20 +2,20 @@
 import React, { useEffect } from "react";
 import { useMainStates } from "@/store";
 function Strength_div() {
-  let TooWeakColor = useMainStates((state) => state.TooWeakColor);
-  let WeakColor = useMainStates((state) => state.WeakColor);
-  let MediumColor = useMainStates((state) => state.MediumColor);
-  let StrongColor = useMainStates((state) => state.StrongColor);
-  let TooWeakColorBorder = useMainStates((state) => state.TooWeakColorBorder);
-  let WeakColorBorder = useMainStates((state) => state.WeakColorBorder);
-  let MediumColorBorder = useMainStates((state) => state.MediumColorBorder);
-  let StrongColorBorder = useMainStates((state) => state.StrongColorBorder);
-  let UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
-  let LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
-  let Numbers = useMainStates((state) => state.Numbers);
-  let Symbols = useMainStates((state) => state.Symbols);
-  let ChangeColors = useMainStates((state) => state.ChangeColors);
-  let strengthWord = useMainStates((state) => state.strengthWord);
+  const TooWeakColor = useMainStates((state) => state.TooWeakColor);
+  const WeakColor = useMainStates((state) => state.WeakColor);
+  const MediumColor = useMainStates((state) => state.MediumColor);
+  const StrongColor = useMainStates((state) => state.StrongColor);
+  const TooWeakColorBorder = useMainStates((state) => state.TooWeakColorBorder);
+  const WeakColorBorder = useMainStates((state) => state.WeakColorBorder);
+  const MediumColorBorder = useMainStates((state) => state.MediumColorBorder);
+  const StrongColorBorder = useMainStates((state) => state.StrongColorBorder);
+  const UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
+  const LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
+  const Numbers = useMainStates((state) => state.Numbers);
+  const Symbols = useMainStates((state) => state.Symbols);
+  const ChangeColors = useMainStates((state) => state.ChangeColors);
+  const strengthWord = useMainStates((state) => state.strengthWord);
   useEffect(() => {
     ChangeColors();
   }, [UpperCaseLetters, LowerCaseLetters, Numbers, Symbols]);

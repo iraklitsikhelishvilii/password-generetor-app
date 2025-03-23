@@ -40,7 +40,7 @@ function Main() {
     if (Numbers) allChars += numbers;
     if (Symbols) allChars += symbols;
 
-    if (allChars.length === 0) return "Select at least one option";
+    if (allChars.length === 0) return "Select option";
 
     let password = "";
     for (let i = 0; i < length; i++) {

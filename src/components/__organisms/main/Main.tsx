@@ -12,11 +12,11 @@ function Main() {
   const HandleEnter = useMainStates((state) => state.HandleEnter);
   const HandleLeave = useMainStates((state) => state.HandleLeave);
   const [Value, setValue] = useState(12);
-  const [Password, setPassword] = useState("PTx1f5DaFX");
+  const [Password, setPassword] = useState("TNJITCZWBSUK");
   const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(Number(e.target.value));
   };
-
+  const [copied, setcopied] = useState(false);
   const UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
   const LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
   const Numbers = useMainStates((state) => state.Numbers);
@@ -28,6 +28,7 @@ function Main() {
     Numbers: boolean,
     Symbols: boolean
   ) {
+    setcopied(false);
     const uppercase = "QWERTYUIOPASDFGHJKLZXCVBNM";
     const lowercase = "qwertyuiopasdfghjklzxcvbnm";
     const numbers = "1234567890";
@@ -56,7 +57,7 @@ function Main() {
   };
   const Copy = () => {
     navigator.clipboard.writeText(Password);
-    alert("Password copied!");
+    setcopied(true);
   };
   return (
     <div className="h-[100vh] w-[100%] flex justify-center items-center bg-[#18171F]">
@@ -64,10 +65,15 @@ function Main() {
         <h1 className="text-[#817D92] text-[24px] font-[700] max-[500px]:text-[16px] ">
           Password Generator
         </h1>
-        <div className="w-[100%] max-w-[540px] bg-[#24232C] flex justify-between items-center px-[32px] py-[28px] mt-[30px] max-[500px]:px-[16px] max-[500px]:py-[16px]">
+        <div className="relative w-[100%] max-w-[540px] bg-[#24232C] flex justify-between items-center px-[32px] py-[28px] mt-[30px] max-[500px]:px-[16px] max-[500px]:py-[16px]">
           <p className="text-[#E6E5EA] text-[32px] max-[500px]:text-[24px]">
             {Password}
           </p>
+          {copied && (
+            <p className="text-[#A4FFAF] text-[18px] font-[700] absolute right-[70px] max-[500px]:right-[50px]">
+              COPIED
+            </p>
+          )}
           <Image
             className="w-[21px] h-[28px] cursor-pointer max-[500px]:w-[17px] max-[500px]:h-[20px]"
             src={copy_img}

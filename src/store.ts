@@ -20,6 +20,7 @@ interface useMainStateProps {
   StrongColor: string;
   StrongColorBorder: string;
   ChangeColors: () => void;
+  strengthWord: string;
 }
 export const useMainStates = create<useMainStateProps>((set, get) => ({
   UpperCaseLetters: true,
@@ -54,8 +55,15 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
   MediumColorBorder: "#E6E5EA",
   StrongColor: "",
   StrongColorBorder: "#E6E5EA",
+  strengthWord: "",
   ChangeColors: () => {
-    const { UpperCaseLetters, LowerCaseLetters, Numbers, Symbols } = get();
+    const {
+      UpperCaseLetters,
+      LowerCaseLetters,
+      Numbers,
+      Symbols,
+      strengthWord,
+    } = get();
     if (UpperCaseLetters && LowerCaseLetters && Numbers && Symbols) {
       set({
         TooWeakColor: "#A4FFAF",
@@ -66,6 +74,7 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
         MediumColorBorder: "#A4FFAF",
         StrongColor: "#A4FFAF",
         StrongColorBorder: "#A4FFAF",
+        strengthWord: "STRONG",
       });
     } else if (
       (UpperCaseLetters && LowerCaseLetters && Numbers) ||
@@ -82,6 +91,7 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
         MediumColorBorder: "#F8CD65",
         StrongColor: "",
         StrongColorBorder: "#E6E5EA",
+        strengthWord: "MEDIUM",
       });
     } else if (
       (UpperCaseLetters && LowerCaseLetters) ||
@@ -100,6 +110,7 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
         MediumColorBorder: "#E6E5EA",
         StrongColor: "",
         StrongColorBorder: "#E6E5EA",
+        strengthWord: "WEAK",
       });
     } else if (UpperCaseLetters || LowerCaseLetters || Numbers || Symbols) {
       set({
@@ -111,6 +122,7 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
         MediumColorBorder: "#E6E5EA",
         StrongColor: "",
         StrongColorBorder: "#E6E5EA",
+        strengthWord: "TOO WEAK!",
       });
     } else {
       set({
@@ -122,6 +134,7 @@ export const useMainStates = create<useMainStateProps>((set, get) => ({
         MediumColorBorder: "#E6E5EA",
         StrongColor: "",
         StrongColorBorder: "#E6E5EA",
+        strengthWord: " ",
       });
     }
   },

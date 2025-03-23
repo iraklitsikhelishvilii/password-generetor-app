@@ -30,7 +30,9 @@ function Features_div() {
         >
           {UpperCaseLetters && <Image src={check_img} alt="check-box image" />}
         </div>
-        <p className="text-[#E6E5EA] text-[18px]">Include Uppercase Letters</p>
+        <p className="text-[#E6E5EA] text-[18px] max-[500px]:text-[16px]">
+          Include Uppercase Letters
+        </p>
       </div>
       <div className="flex items-center gap-[24px]">
         <div
@@ -41,7 +43,9 @@ function Features_div() {
         >
           {LowerCaseLetters && <Image src={check_img} alt="check-box image" />}
         </div>
-        <p className="text-[#E6E5EA] text-[18px]">Include Lowercase Letters</p>
+        <p className="text-[#E6E5EA] text-[18px] max-[500px]:text-[16px]">
+          Include Lowercase Letters
+        </p>
       </div>
       <div className="flex items-center gap-[24px]">
         <div
@@ -52,7 +56,9 @@ function Features_div() {
         >
           {Numbers && <Image src={check_img} alt="check-box image" />}
         </div>
-        <p className="text-[#E6E5EA] text-[18px]">Include Numbers</p>
+        <p className="text-[#E6E5EA] text-[18px] max-[500px]:text-[16px]">
+          Include Numbers
+        </p>
       </div>
       <div className="flex items-center gap-[24px]">
         <div
@@ -63,7 +69,9 @@ function Features_div() {
         >
           {Symbols && <Image src={check_img} alt="check-box image" />}
         </div>
-        <p className="text-[#E6E5EA] text-[18px]">Include Symbols</p>
+        <p className="text-[#E6E5EA] text-[18px] max-[500px]:text-[16px]">
+          Include Symbols
+        </p>
       </div>
     </div>
   );

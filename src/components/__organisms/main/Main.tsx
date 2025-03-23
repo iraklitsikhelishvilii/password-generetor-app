@@ -2,10 +2,11 @@
 import Image from "next/image";
 import copy_img from "../../../images/fa-regular_copy.svg";
 import { useMainStates } from "@/store";
-import Arrow_img from "@/components/__atoms/arrow_img/Arrow_img";
+
 import Features_div from "@/components/__molecules/features_div/Features_div";
 import Strength_div from "@/components/__molecules/strength_div/Strength_div";
 import { useState } from "react";
+import Button from "@/components/__atoms/button/Button";
 
 function Main() {
   let Hover = useMainStates((state) => state.Hover);
@@ -16,17 +17,43 @@ function Main() {
   const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(Number(e.target.value));
   };
-  const Array =
-    "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!()_-@#$%&?";
-  function Getpassword(length: any) {
+
+  let UpperCaseLetters = useMainStates((state) => state.UpperCaseLetters);
+  let LowerCaseLetters = useMainStates((state) => state.LowerCaseLetters);
+  let Numbers = useMainStates((state) => state.Numbers);
+  let Symbols = useMainStates((state) => state.Symbols);
+  function Getpassword(
+    length: number,
+    UpperCaseLetters: boolean,
+    LowerCaseLetters: boolean,
+    Numbers: boolean,
+    Symbols: boolean
+  ) {
+    let uppercase = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    let lowercase = "qwertyuiopasdfghjklzxcvbnm";
+    let numbers = "1234567890";
+    let symbols = "!()_-@#$%&?";
+    let allChars = "";
+
+    if (UpperCaseLetters) allChars += uppercase;
+    if (LowerCaseLetters) allChars += lowercase;
+    if (Numbers) allChars += numbers;
+    if (Symbols) allChars += symbols;
+
+    if (allChars.length === 0) return "Select at least one option";
+
     let password = "";
     for (let i = 0; i < length; i++) {
-      password += Array[Math.floor(Math.random() * Array.length)];
+      password += allChars[Math.floor(Math.random() * allChars.length)];
     }
+
     return password;
   }
+
   const PasswordClick = () => {
-    setPassword(Getpassword(Value));
+    setPassword(
+      Getpassword(Value, UpperCaseLetters, LowerCaseLetters, Numbers, Symbols)
+    );
   };
   const Copy = () => {
     navigator.clipboard.writeText(Password);
@@ -34,14 +61,16 @@ function Main() {
   };
   return (
     <div className="h-[100vh] w-[100%] flex justify-center items-center bg-[#18171F]">
-      <div className="flex flex-col items-center justify-center w-[100%] px-[10px]">
-        <h1 className="text-[#817D92] text-[24px] font-[700]">
+      <div className="flex flex-col items-center justify-between w-[100%] px-[15px]">
+        <h1 className="text-[#817D92] text-[24px] font-[700] max-[500px]:text-[16px] ">
           Password Generator
         </h1>
-        <div className="w-[100%] max-w-[540px] bg-[#24232C] flex justify-between items-center px-[32px] py-[28px] mt-[30px]">
-          <p className="text-[#E6E5EA] text-[32px]">{Password}</p>
+        <div className="w-[100%] max-w-[540px] bg-[#24232C] flex justify-between items-center px-[32px] py-[28px] mt-[30px] max-[500px]:px-[16px] max-[500px]:py-[16px]">
+          <p className="text-[#E6E5EA] text-[32px] max-[500px]:text-[24px]">
+            {Password}
+          </p>
           <Image
-            className="w-[21px] h-[28px] cursor-pointer"
+            className="w-[21px] h-[28px] cursor-pointer max-[500px]:w-[17px] max-[500px]:h-[20px]"
             src={copy_img}
             alt="foto of copy feature"
             width={600}
@@ -50,10 +79,14 @@ function Main() {
           />
         </div>
 
-        <div className="w-[100%] max-w-[540px] bg-[#24232C] px-[32px] py-[32px] mt-[24px]">
+        <div className="w-[100%] max-w-[540px] bg-[#24232C] px-[32px] py-[32px] mt-[24px] max-[500px]:px-[16px] max-[500px]:py-[16px]">
           <div className="flex w-[100%] justify-between items-center">
-            <p className=" text-[#E6E5EA] text-[18px]">Character Length</p>
-            <p className="text-[#A4FFAF] text-[32px]">{Value}</p>
+            <p className=" text-[#E6E5EA] text-[18px] max-[500px]:text-[16px]">
+              Character Length
+            </p>
+            <p className="text-[#A4FFAF] text-[32px] max-[500px]:text-[24px]">
+              {Value}
+            </p>
           </div>
           <input
             type="range"
@@ -64,19 +97,12 @@ function Main() {
           />
           <Features_div />
           <Strength_div />
-          <button
-            onClick={PasswordClick}
-            className={`w-[100%] py-[20px] mt-[30px]   text-[18px] flex items-center justify-center gap-[24px] border-solid border-[2px] border-[#A4FFAF] ${
-              Hover
-                ? "bg-[#24232C] text-[#A4FFAF]"
-                : "bg-[#A4FFAF] text-[#24232C]"
-            }`}
-            onMouseEnter={HandleEnter}
-            onMouseLeave={HandleLeave}
-          >
-            GENERATE
-            <Arrow_img Hover={Hover} />
-          </button>
+          <Button
+            PasswordClick={PasswordClick}
+            Hover={Hover}
+            HandleEnter={HandleEnter}
+            HandleLeave={HandleLeave}
+          />
         </div>
       </div>
     </div>

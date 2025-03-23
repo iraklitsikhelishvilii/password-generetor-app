@@ -28,10 +28,10 @@ function Main() {
     Numbers: boolean,
     Symbols: boolean
   ) {
-    let uppercase = "QWERTYUIOPASDFGHJKLZXCVBNM";
-    let lowercase = "qwertyuiopasdfghjklzxcvbnm";
-    let numbers = "1234567890";
-    let symbols = "!()_-@#$%&?";
+    const uppercase = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    const lowercase = "qwertyuiopasdfghjklzxcvbnm";
+    const numbers = "1234567890";
+    const symbols = "!()_-@#$%&?";
     let allChars = "";
 
     if (UpperCaseLetters) allChars += uppercase;
